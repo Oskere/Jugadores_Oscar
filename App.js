@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   image: {
-    flex: 1,
+    flex: 2,
   },
   imageStyle: {
     flex: 1,
