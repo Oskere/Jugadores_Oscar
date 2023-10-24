@@ -1,10 +1,10 @@
-import {View, Text, StyleSheet} from "react-native";
+import {Text, StyleSheet} from "react-native";
 import React from "react";
 
 
 export default function FooterTextos(props) {
     return (
-            <Text style={styles.equipo}>www.equipo.com</Text>
+            <Text style={styles.equipo}>{props.info}</Text>
     )
 }
 
