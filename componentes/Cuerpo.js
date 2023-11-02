@@ -1,16 +1,36 @@
-import {View, StyleSheet} from "react-native";
-import React from "react";
-import ListaJugadores from "./ListaJugadores";
-import ImagenJugador from "./ImagenJugador";
+import { View } from "react-native"
+import { StyleSheet } from "react-native"
+import ListaJugadores from "./ListaJugadores"
+import Perfil from "./ImagenJugador"
+import React, { Component } from 'react'
 
-export default function Cuerpo() {
-    return (
+
+export default class Cuerpo extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+            jugadorSeleccionado: "Gavi"
+      }
+    }
+
+   
+ jugadorSeleccionado = (jugador) => {
+    console.log('jugador seleccionado:', jugador);
+    this.setState({ jugadorSeleccionado: jugador });
+  }
+  
+    render() {
+      const { equipoSeleccionado } = this.props;
+      const { jugadorSeleccionado } = this.state;
+
+      return (
         <View style={styles.bodyStyle}>
-            <ListaJugadores></ListaJugadores>
-            <ImagenJugador></ImagenJugador>
+          <ListaJugadores equipoSeleccionado={equipoSeleccionado} jugadorSeleccionado={this.jugadorSeleccionado} JugadorSeleccionado={this.state.jugadorSeleccionado}/>
+          <Perfil jugadorSeleccionado={jugadorSeleccionado}/>
         </View>
-    )
-}
+      );
+    }
+  }
 
 const styles = StyleSheet.create({
    

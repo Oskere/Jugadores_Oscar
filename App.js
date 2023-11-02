@@ -1,18 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, Button, Pressable, Image } from 'react-native';
-import FooterJugadores from './componentes/FooterJugadores';
-import Cuerpo from './componentes/Cuerpo';
+import { StyleSheet, Text, View, Button,Image} from 'react-native';
 import ListaEquipos from './componentes/ListaEquipos';
+import Cuerpo from './componentes/Cuerpo';
+import FooterJugadores from './componentes/FooterJugadores';
+import { Component } from 'react';
 
-export default function App() {
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        equipoSeleccionado: 'FC Barcelona',
+    };
+}
+
+
+EquipoSeleccionado = (equipo) => {
+  this.setState({ equipoSeleccionado: equipo });
+}
+
+  
+render() {
+  const { equipoSeleccionado } = this.state;
+
   return (
-    <View style={styles.container}>
-      <ListaEquipos/>
-      <Cuerpo/>
-      <FooterJugadores/>
-    </View>
+      <View style={styles.container}>
+          <ListaEquipos EquipoSeleccionado={this.EquipoSeleccionado} equipoSeleccionado={equipoSeleccionado}/>
+          <Cuerpo equipoSeleccionado={equipoSeleccionado} />
+
+          <FooterJugadores />
+      </View>
   );
+}
 }
 
 const styles = StyleSheet.create({

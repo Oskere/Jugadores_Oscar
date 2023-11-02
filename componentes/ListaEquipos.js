@@ -1,24 +1,30 @@
-import { View, Text, StyleSheet } from "react-native";
-import React, { Component } from "react";
-import Equipos from "./Equipos";
+import { View } from "react-native"
+import Equipos from "./Equipos"
+import { StyleSheet } from "react-native";
+import React, { Component } from 'react'
 
 export default class ListaEquipos extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      equipos: ["FC Barcelona", "Real Madrid", "Bayern Munchen"],
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            equipos: ['FC Barcelona', 'Real Madrid', 'Manchester City'],
+        };
+    }
 
-  render() {
-    return (
-      <View style={styles.headerStyle}>
-        {this.state.equipos.map((equipo, index) => (
-          <Equipos key={index} nombre={equipo} />
-        ))}
-      </View>
-    );
-  }
+    render() {
+        const { EquipoSeleccionado, equipoSeleccionado } = this.props;
+        const { equipos } = this.state;
+
+        return (
+            <View style={styles.headerStyle}>
+                {equipos.map((equip, index) => {
+                    return (
+                        <Equipos key={index} equipo={equip} EquipoSeleccionado={EquipoSeleccionado} equipoSeleccionado={equipoSeleccionado}/>
+                    )
+                })}
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -28,5 +34,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 100,
     alignItems: "center",
-  },
+  }
 });

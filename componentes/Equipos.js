@@ -1,14 +1,39 @@
-import {View, Text, StyleSheet} from "react-native";
-import React from "react";
+import { Text, View } from "react-native"
+import { StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native";
 
-export default function Equipos(props) {
-    return (
-        <Text style={styles.equipo}>{props.nombre}</Text>
-    )
-}
+function Equipo(props) {
+
+  const equipoColor = props.equipo === props.equipoSeleccionado ? cambiarColor(props.equipo) : 'white';
+  return (
+      <>
+        <TouchableOpacity 
+        style={[styles.equipos, { backgroundColor: equipoColor }]}
+        onPress={() => props.EquipoSeleccionado(props.equipo)}>
+            
+          <Text>{props.equipo}</Text>
+        </TouchableOpacity>
+      </>
+    );
+  }
+  
+export default Equipo;
+
+const cambiarColor = (equipo) => {
+  switch (equipo) {
+    case 'FC Barcelona':
+      return '#1078A5';
+    case 'Real Madrid':
+      return '#5AE2E9';
+    case 'Manchester City':
+      return '#7759EA';
+    default:
+      return 'white';
+  }
+};
 
 const styles = StyleSheet.create({
-      equipo: {
+      equipos: {
         borderWidth: 2,
         borderColor: "#000000",
         margin: 10,

@@ -11,7 +11,7 @@ export default function FooterJugadores() {
   return (
     <View style={styles.footerStyle}>
       {datos.map((item, index) => (
-        <FooterTextos key={index} info={item.info} />
+        <FooterTextos key={index} info={item.info}/>
       ))}
     </View>
   );
